@@ -20,9 +20,10 @@ public class Keepsake : MonoBehaviour
     public enum TriggerPoint
     {
         OnStartOfTurn,
+        BeforeCall,
         AfterCall,
-        OnCashOut,
-        OnTotalScore,
+        BeforeCashOut,
+        AfterCashOut,
         BeforePatternCheck,
         AfterPatternCheck
     }

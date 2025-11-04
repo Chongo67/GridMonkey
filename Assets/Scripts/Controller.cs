@@ -28,6 +28,8 @@ public class Controller : MonoBehaviour
     public GameObject shop;
     public TextMeshProUGUI creditText;
     public TextMeshProUGUI callText;
+    public TextMeshProUGUI roundText;
+    public TextMeshProUGUI deadlineText;
     public KeepsakeFunctions kFunc;
     
     //public GameObject toolTip;
@@ -36,6 +38,7 @@ public class Controller : MonoBehaviour
    
 
     public int keepsakeLimit;
+    public List<GameObject> keepsakeSlots;
     public List<Keepsake> keepsakes;
 
     public int roundNumber;
@@ -56,6 +59,8 @@ public class Controller : MonoBehaviour
         callCount -= 1;
         card.Play(ballsPerCall);
         KeepsakeTrigger(Keepsake.TriggerPoint.AfterCall);
+
+        
         UpdateBoards();
     }
 
@@ -63,6 +68,25 @@ public class Controller : MonoBehaviour
     {
         credits += card.CashOutCard();
         callCount = callLimit;
+        if (roundCount == 1)
+        {
+            if (credits > deadline)
+            {
+                credits = credits - deadline;
+                deadline = deadline * 2;
+                roundCount = 3;
+            }
+            else
+            {
+                UpdateBoards();
+                roundText.text = "GAME OVER!!!!!!!!!!!!!!!";
+                return;
+            }
+        }
+        else
+        {
+            roundCount--;
+        }
         UpdateBoards();
     }
 
@@ -78,6 +102,7 @@ public class Controller : MonoBehaviour
     {
         creditText.text = "Credits: " + credits.ToString();
         callText.text = "Calls Remaining: " + callCount.ToString();
+        roundText.text = "Rounds Remaining: " + roundCount.ToString() +"\nAmount Due: " + deadline.ToString();
     }
 
     public void KeepsakeTrigger(Keepsake.TriggerPoint triggerPoint)

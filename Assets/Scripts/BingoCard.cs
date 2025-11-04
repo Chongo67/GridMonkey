@@ -70,7 +70,9 @@ public class BingoCard : MonoBehaviour
     {
         ClearCard();
         bingoBalls.Clear();
-        return currentWinnings;
+        int cashedIn = currentWinnings;
+        currentWinnings = 0;
+        return cashedIn;
     }
 
     public int getDaubCode()

@@ -12,6 +12,12 @@ public class Evaluator : MonoBehaviour
         public int widthRight; //for stuff like diagonal left (find more graceful solution later?)
         public int mult;
         public int location;
+        public List<BingoBall> balls;
+
+        //in the future, there will be implementation for having the Bingo Balls carry their own value that can be changed
+        //to do so would DRASTICALLY alter how the math and the sharing of information works.
+
+
 
         public BingoPattern(string name, int pattern, int width, int widthRight, int mult)
         {
@@ -21,6 +27,7 @@ public class Evaluator : MonoBehaviour
             this.widthRight = widthRight;
             this.mult = mult;
             this.location = 0;
+            this.balls = new List<BingoBall>();
         }
 
         public BingoPattern(BingoPattern patt, int location)
@@ -31,6 +38,7 @@ public class Evaluator : MonoBehaviour
             this.widthRight= patt.widthRight;
             this.mult = patt.mult;
             this.location = location;
+            this.balls = patt.balls;
         }
     }
 
