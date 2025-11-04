@@ -908,7 +908,7 @@ MonoBehaviour:
   shop: {fileID: 0}
   creditText: {fileID: 1754808943}
   callText: {fileID: 700547289}
-  roundText: {fileID: 0}
+  roundText: {fileID: 1922117852}
   deadlineText: {fileID: 0}
   kFunc: {fileID: 253685297}
   keepsakeLimit: 5
